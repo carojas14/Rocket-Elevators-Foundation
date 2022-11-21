@@ -1,0 +1,117 @@
+<%= form_with(model: quote, local: true) do |form| %>
+  <% if quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% quote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :buildingType %>
+    <%= form.text_field :buildingType %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrAppBuild %>
+    <%= form.number_field :nbrAppBuild %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrFloorsR %>
+    <%= form.number_field :nbrFloorsR %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrFloorsC %>
+    <%= form.number_field :nbrFloorsC %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrFloorsCor %>
+    <%= form.number_field :nbrFloorsCor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrFloorsH %>
+    <%= form.number_field :nbrFloorsH %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrBasementFloorsR %>
+    <%= form.number_field :nbrBasementFloorsR %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrBasementFloorsC %>
+    <%= form.number_field :nbrBasementFloorsC %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrBasementFloorsCor %>
+    <%= form.number_field :nbrBasementFloorsCor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrBasementFloorsH %>
+    <%= form.number_field :nbrBasementFloorsH %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrDisBuiCor %>
+    <%= form.number_field :nbrDisBuiCor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrDisBuiH %>
+    <%= form.number_field :nbrDisBuiH %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrParkingC %>
+    <%= form.number_field :nbrParkingC %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrParkingCor %>
+    <%= form.number_field :nbrParkingCor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrParkingH %>
+    <%= form.number_field :nbrParkingH %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrElevatorCages %>
+    <%= form.number_field :nbrElevatorCages %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrOccPerFloorCor %>
+    <%= form.number_field :nbrOccPerFloorCor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrOccPerFloorH %>
+    <%= form.number_field :nbrOccPerFloorH %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nbrActPerDay %>
+    <%= form.number_field :nbrActPerDay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :serviceType %>
+    <%= form.text_field :serviceType %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

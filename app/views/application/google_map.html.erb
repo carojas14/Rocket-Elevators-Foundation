@@ -1,0 +1,67 @@
+
+<%# startegy to go would be to make a loop that will go through every addresses in the address table and add that address to request %>
+<%# for the api to make pointers for each addresses%>
+
+
+
+
+<h1>
+    Coordinates
+</h1>
+<h3 id="coords">...</h3>
+<input type="button" onclick="table();" value="change it">
+
+
+<script>
+    var address = "5 chemin des cailles saint annes des lacs";
+    function getCoord() {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyB1thG8Cvaivg4YXaC7lyOg_HPF6h58KAc`)
+    .then((response) => {
+        return response.json();
+    }).then(jsonData => {
+        var x = jsonData.results[0].geometry.location
+        console.log(x);
+        txt = JSON.stringify(x);
+        $("#coords").replaceWith(txt);
+    }).catch(error => {
+        console.log(error);
+    })
+    }
+</script>
+
+<script>
+    function table() {
+    var mysql = require('mysql');
+
+    var mySQL = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "password",
+        database: "Rocket_Elevators_Information_System"
+    });
+
+    mySQL.connect(function(err) {
+        if (err) throw err;
+        //Select all customers and return the result object:
+        con.query("SELECT * FROM addresses", function (err, result, fields) {
+            if (err) throw err;
+            console.log(result);
+        });
+    });
+
+    var address = "5 chemin des cailles saint annes des lacs";
+    function getCoord() {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyB1thG8Cvaivg4YXaC7lyOg_HPF6h58KAc`)
+    .then((response) => {
+        return response.json();
+    }).then(jsonData => {
+        var x = jsonData.results[0].geometry.location
+        console.log(x);
+        txt = JSON.stringify(x);
+        $("#coords").replaceWith(txt);
+    }).catch(error => {
+        console.log(error);
+    })
+    }
+    }
+</script>

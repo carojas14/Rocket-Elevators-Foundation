@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customercreationdate:</strong>
+  <%= @customer.CustomerCreationDate %>
+</p>
+
+<p>
+  <strong>Companyname:</strong>
+  <%= @customer.CompanyName %>
+</p>
+
+<p>
+  <strong>Companyheadquarteradress:</strong>
+  <%= @customer.CompanyHeadquarterAdress %>
+</p>
+
+<p>
+  <strong>Fullnamecompanycontact:</strong>
+  <%= @customer.FullNameCompanyContact %>
+</p>
+
+<p>
+  <strong>Companycontactphone:</strong>
+  <%= @customer.CompanyContactPhone %>
+</p>
+
+<p>
+  <strong>Emailcompanycontact:</strong>
+  <%= @customer.EmailCompanyContact %>
+</p>
+
+<p>
+  <strong>Companydescription:</strong>
+  <%= @customer.CompanyDescription %>
+</p>
+
+<p>
+  <strong>Fullnameservicetechnicalauth:</strong>
+  <%= @customer.FullNameServiceTechnicalAuth %>
+</p>
+
+<p>
+  <strong>Technicalauthorityphoneservice:</strong>
+  <%= @customer.TechnicalAuthorityPhoneService %>
+</p>
+
+<p>
+  <strong>Technicalmanageremailservice:</strong>
+  <%= @customer.TechnicalManagerEmailService %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

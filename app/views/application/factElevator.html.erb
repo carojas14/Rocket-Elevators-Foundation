@@ -1,0 +1,89 @@
+<% provide :head_tags do %>
+
+    <%
+    @latList = []
+    @lngList = []
+    @buildingList = []
+    @clientList = []
+    @batteryList = []
+    @columnList = []
+    @elevatorList = []
+    @techContactList = []
+    # loops through every addresses in the database and adds the specified informations in arrays for javascript use
+    Address.find_each do |address|
+        @lat = address.latitude
+            @latList.push(@lat)
+        @lng = address.longitude
+            @lngList.push(@lng)
+        @building = address.building
+            @buildingList.push(@building.position)
+        @client = @building.customer.CompanyName
+            @clientList.push(@client)
+        @batteryList.push(@building.battery_ids.length)
+        @column = @building.batteries[0].columns
+            @columnList.push(@column)
+        @techcontact = @building.FullNameBuildingAdmin
+            @techContactList.push(@techcontact)
+
+    end
+    # gets the initial map position as the position for the first address in database
+    @mapLat = Address.first.latitude
+    @mapLng = Address.first.longitude
+    %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            x = <%= @latList %>
+            y = <%= @lngList %>
+            z = <%= raw @buildingList.to_json %>
+            a = <%= raw @clientList.to_json %>
+            b = <%= raw @batteryList.to_json %>
+            c = <%= raw @columnList.to_json %>
+            d = <%= raw @techContactList.to_json %>
+            initMap(<%= @mapLat %>, <%= @mapLng %>, x, y, z, a, b, c, d)
+        });
+    </script>
+
+<% end %>
+
+<style>
+#map {
+    width: 100%;
+    height: 500px;
+}
+</style>
+
+<div id="map"><div>
+
+<p> There is <%= Elevator.count / Customer.count %> elevator per customer </p>
+
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 1).count%> contact us sent for the time period : 2022/01/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 2).count%> contact us sent for the time period : 2022/02/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 3).count%> contact us sent for the time period : 2022/03/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 4).count%> contact us sent for the time period : 2022/04/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 5).count%> contact us sent for the time period : 2022/05/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 6).count%> contact us sent for the time period : 2022/06/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 7).count%> contact us sent for the time period : 2022/07/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 8).count%> contact us sent for the time period : 2022/08/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 9).count%> contact us sent for the time period : 2022/09/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 10).count%> contact us sent for the time period : 2022/10/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 11).count%> contact us sent for the time period : 2022/11/..
+<p> There is <%=Lead.where('extract(month from created_at) = ?', 12).count%> contact us sent for the time period : 2022/12/..
+<br>
+
+<br>
+<br>
+<br>
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 1).count%> Quote form sent for the time period : 2022/01/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 2).count%> Quote form sent for the time period : 2022/02/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 3).count%> Quote form sent for the time period : 2022/03/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 4).count%> Quote form sent for the time period : 2022/04/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 5).count%> Quote form sent for the time period : 2022/05/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 6).count%> Quote form sent for the time period : 2022/06/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 7).count%> Quote form sent for the time period : 2022/07/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 8).count%> Quote form sent for the time period : 2022/08/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 9).count%> Quote form sent for the time period : 2022/09/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 10).count%> Quote form sent for the time period : 2022/10/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 11).count%> Quote form sent for the time period : 2022/11/..
+<p> There is <%=Quote.where('extract(month from created_at) = ?', 12).count%> Quote form sent for the time period : 2022/12/..
+<br>

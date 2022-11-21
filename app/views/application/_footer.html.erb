@@ -1,0 +1,212 @@
+<!-- CONTACT -->
+<section id="contact">
+	<div class="container">
+		<header class="text-center mb-60">
+			<h2>Contact Us</h2>
+			<h3 class="lead font-lato">If you have anything you want to ask us, please fill the form below.</h3>
+			<hr />
+		</header>
+
+		<div class="row">
+
+			<!-- FORM -->
+			<%= form_tag("/leads_quote", method: "post") do %>
+			<div class="col-md-8 col-sm-8">
+
+
+				
+				<!--
+					MESSAGES
+					
+						How it works?
+						The form data is posted to php/contact.php where the fields are verified!
+						php.contact.php will redirect back here and will add a hash to the end of the URL:
+							#alert_success 		= email sent
+							#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
+							#alert_mandatory	= email not sent - required fields empty
+							Hashes are handled by assets/js/contact.js
+
+						Form data: required to be an array. Example:
+							contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
+							Also, add `required` to input fields if is a mandatory field. 
+							Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
+
+						PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
+										ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
+
+						WARNING! Do not change the `email` and `name`!
+									contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+									contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+				-->
+
+				<!-- Alert Success -->
+				<div id="alert_success" class="alert alert-success mb-30">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Thank You!</strong> Your message successfully sent!
+				</div><!-- /Alert Success -->
+
+
+				<!-- Alert Failed -->
+				<div id="alert_failed" class="alert alert-danger mb-30">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>[SMTP] Error!</strong> Internal server error!
+				</div><!-- /Alert Failed -->
+
+
+				<!-- Alert Mandatory -->
+				<div id="alert_mandatory" class="alert alert-danger mb-30">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+				</div><!-- /Alert Mandatory -->
+
+
+				<form>
+					<fieldset>
+						<input type="hidden" name="action" value="contact_send" />
+
+						<div class="row">
+								<div class="col-md-4">
+									<label for="contact:name">Full Name *</label>
+									<input required type="text" value="" class="form-control" name="contactName" id="contact:name">
+								</div>
+								<div class="col-md-4">
+									<label for="contact:email">E-mail Address *</label>
+									<input required type="email" value="" class="form-control" name="contactEmail" id="contact:email">
+								</div>
+								<div class="col-md-4">
+									<label for="contact:phone">Phone</label>
+									<input type="text" value="" class="form-control" name="contactPhone" id="contact:phone">
+								</div>
+						</div>
+						<div class="row">
+								<div class="col-md-4">
+									<label for="contact:buisnessName">Buisness name *</label>
+									<input type="text" value="" class="form-control" name="contactBuisnessName" id="contact:buisnessName">
+								</div>
+								<div class="col-md-4">
+									<label for="contact_department">Department</label>
+									<input required type="text" value="" class="form-control" name="contactDepartement" id="contact:departement"></select>
+								</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<label for="contact:project">Project *</label>
+								<input required type="text" value="" class="form-control" name="contactProject" id="contact:project">
+							</div>
+						</div>
+						<div class="row">
+								<div class="col-md-12">
+									<label for="contact:message">Project description *</label>
+									<textarea required maxlength="10000" rows="8" class="form-control" name="contactMessage" id="contact:message"></textarea>
+								</div>
+						</div>
+						<div class="row">
+								<div class="col-md-12">
+									<label for="contact:attachment">File Attachment</label>
+
+									<!-- custom file upload -->
+									<input class="custom-file-upload" type="file" id="file" name="contactAttachment" id="contact:attachment" data-btn-text="Select a File" />
+									<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
+
+								</div>
+						</div>
+
+					</fieldset>
+
+					<div class="row">
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-primary" value="submit">SEND FORM</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<% end %>
+
+			<!-- /FORM -->
+
+
+			<!-- INFO -->
+			<div class="col-md-4 col-sm-4">
+
+				<h2>Visit Us</h2>
+
+				<!-- 
+				Available heights
+					h-100
+					h-150
+					h-200
+					h-250
+					h-300
+					h-350
+					h-400
+					h-450
+					h-500
+					h-550
+					h-600
+				-->
+				<div id="map2" class="h-400 grayscale"></div>
+
+				<hr />
+
+				<p>
+					<span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> 4468 Wellington St Suite 204, Verdun, Quebec H4G 1W5</span>
+					<span class="block"><strong><i class="fa fa-phone"></i> Phone:</strong> <a href="tel:1800-555-1234">+1 800-887-2497</a></span>
+					<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:mail@yourdomain.com">mail@yourdomain.com</a></span>
+				</p>
+
+			</div>
+			<!-- /INFO -->
+		</div>
+	</div>
+</section>
+<!-- /CONTACT -->
+
+<!-- FOOTER -->
+<footer id="footer" class=" footer navbar-fixed-bottom">
+	<div class="container">
+		<div class="row">
+			<!-- col #1 -->
+			<div class="col-md-8">
+				<h3 class="letter-spacing-1">WHY US?</h3>
+				<!-- Small Description -->
+				<p>
+					To put it simple, Rocket Elevator truly wants to give people safe and comfortable elevators, those infrastructures are a crucial parts of our daily life and should not be taken lightly. That is why we will always make sure that you get the best possible services in all matters.
+				</p>
+				<h2>+1 800-887-2497</h2>
+			</div>
+			<!-- /col #1 -->
+
+			<!-- col #2 -->
+			<div class="col-md-4">
+				<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+				<!-- Newsletter Form -->
+				<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+				<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+						<span class="input-group-btn">
+							<button class="btn btn-success" type="submit">Subscribe</button>
+						</span>
+					</div>
+				</form>
+				<!-- /Newsletter Form -->
+			</div>
+			<!-- /col #2 -->
+		</div>
+	</div>
+
+	<div class="copyright">
+		<div class="container">
+			<ul class="float-right m-0 list-inline mobile-block">
+				<li><a href="#">Terms &amp; Conditions</a></li>
+				<li>&bull;</li>
+				<li><a href="#">Privacy</a></li>
+			</ul>
+			&copy; All Rights Reserved, Rocket Elevator LTD
+		</div>
+	</div>
+</footer>
+<!-- /FOOTER -->

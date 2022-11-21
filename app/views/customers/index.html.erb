@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customercreationdate</th>
+      <th>Companyname</th>
+      <th>Companyheadquarteradress</th>
+      <th>Fullnamecompanycontact</th>
+      <th>Companycontactphone</th>
+      <th>Emailcompanycontact</th>
+      <th>Companydescription</th>
+      <th>Fullnameservicetechnicalauth</th>
+      <th>Technicalauthorityphoneservice</th>
+      <th>Technicalmanageremailservice</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.CustomerCreationDate %></td>
+        <td><%= customer.CompanyName %></td>
+        <td><%= customer.CompanyHeadquarterAdress %></td>
+        <td><%= customer.FullNameCompanyContact %></td>
+        <td><%= customer.CompanyContactPhone %></td>
+        <td><%= customer.EmailCompanyContact %></td>
+        <td><%= customer.CompanyDescription %></td>
+        <td><%= customer.FullNameServiceTechnicalAuth %></td>
+        <td><%= customer.TechnicalAuthorityPhoneService %></td>
+        <td><%= customer.TechnicalManagerEmailService %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

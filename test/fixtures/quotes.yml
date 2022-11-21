@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nbrAppBuild: 1
+  NbrFloors: 1
+  nbrBasementFloors: 1
+  nbrDisBui: 1
+  nbrParking: 1
+  nbrElevatorCages: 1
+  nbrOccPerFloor: 1
+  nbrActPerDay: 1
+
+two:
+  nbrAppBuild: 1
+  NbrFloors: 1
+  nbrBasementFloors: 1
+  nbrDisBui: 1
+  nbrParking: 1
+  nbrElevatorCages: 1
+  nbrOccPerFloor: 1
+  nbrActPerDay: 1

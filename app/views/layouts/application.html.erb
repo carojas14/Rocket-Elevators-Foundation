@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>RocketElevatorsInformationSystem</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAPzW8Z-MqPXrzIBZB-62otoa6w5aaVuSc' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'bootstrap',  media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'jquery.themepunch.revolution.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'jquery.themepunch.tools.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.slim.min.js' %>
+	
+		<%= javascript_include_tag 'form.estimate.nbrelevator', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'form.estimate.rates', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'form.hide.show', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+		<%= yield(:head_tags) %>
+	</head>
+
+	<body>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link"></a>
+			</li>
+		</ul>
+		<p class="navbar-text float-right pr-4">
+			<%= link_to 'Admin', "/admin" ,:class => 'navbar-link' %> |
+			<% if user_signed_in? %>
+				Logged in as <strong><%= current_user.email %></strong>.
+				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+			<% else %>
+				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+				<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+			<% end %>
+		</p>
+		<div class="espace"></div>
+		<style> .espace{margin-top:60px}</style>
+		<% if notice %>
+			<p class="alert alert-success"><%= notice %></p>
+		<% end %>
+		<% if alert %>
+			<p class="alert alert-danger"><%= alert %></p>
+		<% end %>
+
+		<%= yield %>
+	</body>
+</html>
+

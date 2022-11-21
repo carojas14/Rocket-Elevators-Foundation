@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Rocket Elevator - Request a quote</title>
+		<meta name="description" content="Request a quote to Rocket Elevator" />
+		<meta name="Author" content="Edouard Labrosse [www.stepofweb.com]" />
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+		<!-- WEB FONTS : use %7C instead of | (pipe) -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+
+		<!-- CORE CSS -->
+		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- THEME CSS -->
+		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+		<!-- PAGE LEVEL SCRIPTS -->
+		<link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+
+		<%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.slim.min.js' %>
+		<%= javascript_include_tag 'form.estimate.nbrelevator', media: 'all', 'data-turbolinks-track': 'reload' %>
+    	<%= javascript_include_tag 'form.estimate.rates', media: 'all', 'data-turbolinks-track': 'reload' %>
+    	<%= javascript_include_tag 'form.hide.show', media: 'all', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+	<!--
+		AVAILABLE BODY CLASSES:
+		
+		smoothscroll 			= create a browser smooth scroll
+		enable-animation		= enable WOW animations
+		
+		bg-grey					= grey background
+		grain-grey				= grey grain background
+		grain-blue				= blue grain background
+		grain-green				= green grain background
+		grain-blue				= blue grain background
+		grain-orange			= orange grain background
+		grain-yellow			= yellow grain background
+		
+		boxed 					= boxed layout
+		pattern1 ... patern11	= pattern background
+		menu-vertical-hide		= hidden, open on click
+		
+		BACKGROUND IMAGE [together with .boxed class]
+		data-background="assets/images/blob/boxed_background/1.jpg"
+	-->
+	<body class="smoothscroll enable-animation">
+
+
+		<!-- wrapper -->
+		<div id="wrapper">
+
+
+			<!-- 
+				AVAILABLE HEADER CLASSES
+
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+
+				.b-0 		= remove bottom border (only with transparent use)
+				.transparent	= transparent header
+				.translucent	= translucent header
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+
+				.clearfix		= required for mobile menu, do not remove!
+
+				Example Usage:  class="clearfix sticky header-sm transparent b-0"
+			-->
+			
+
+
+			<!-- 
+				PAGE HEADER 
+				
+				CLASSES:
+					.page-header-xs	= 20px margins
+					.page-header-md	= 50px margins
+					.page-header-lg	= 80px margins
+					.page-header-xlg= 130px margins
+					.dark			= dark page header
+
+					.shadow-before-1 	= shadow 1 header top
+					.shadow-after-1 	= shadow 1 header bottom
+					.shadow-before-2 	= shadow 2 header top
+					.shadow-after-2 	= shadow 2 header bottom
+					.shadow-before-3 	= shadow 3 header top
+					.shadow-after-3 	= shadow 3 header bottom
+			-->
+
+			<%= render "navbar" %>
+
+			<section class="page-header">
+				<div class="container">
+
+					<h1>FORM : REQUEST A QUOTE</h1>
+
+				</div>
+			</section>
+			<!-- /PAGE HEADER -->
+
+			<!-- style for the form backgound that's so cooool -->
+			<style>
+				.formBGRE {
+					background-image: url(AdobeStock_122227340.jpeg);
+					background-repeat: repeat-x;
+				}
+			</style>
+			<!-- /style for the form backgound that's so cooool -->
+
+			<!-- FORM -->
+            <%= form_tag("/request_quote", method: "post") do %>
+                <section class="formBGRE">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                            <!-- Fancy Elements -->
+                            <div class="card card-default">
+                                <div class="card-heading card-heading-transparent">
+                                    <h2 class="bold">Request a quote</h2>
+                                </div>
+                                <div id="formSelection" class="card-block">
+                                    <!-- Type of building -->
+                                    <br />
+                                    <div>
+                                        <h4>Please select the type of building</h4>
+                                        <select name="type_of_building" id="formBuilding" class="form-control">
+                                            <option value=""> -- Select -- </option>
+                                            <option value="1">Residential</option>
+                                            <option value="2">Commercial</option>
+                                            <option value="3">Corporate</option>
+                                            <option value="4">Hybrid</option>
+                                        </select>
+                                    </div>
+                                    <!-- /type of building -->
+                                    <!-- Residential -->
+                                    <div id="residentialSelection" onchange="ResultResidentialElevators()">
+                                            <h5>Number of appartement in the building</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrAppBuild" id="Resnbrappartement" type="number" min="0" value="0" max="1000" class="formelementsRE">
+                                        </div>
+                                        <br>
+                                            <h5>Number of floors excluding basements floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrFloorsR" id="Resnbrfloors" type="number" min="0" value="0" max="1000" class="formelementsRE">
+                                        </div>
+                                        <br>
+                                            <h5>Number of basement floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrBasementsFloorsR" id="Resnbrbasements" type="number" min="0" value="0" max="1000" class="formelementsRE">
+                                        </div>
+                                    </div>
+                                    <!-- /Residential-->
+                                    <!-- Commercial -->
+                                    <div id="commercialSelection">
+
+                                        <br>
+                                            <h5>Number of disctinct buisnesses</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrDisBuiC" id="comnbrbuisnesses" type="number" value="0" min="0" max="1000" class=" formelementsCOM">
+                                        </div>
+                                        <br>
+                                            <h5>Number of floors excluding basements floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrFloorsC" id="comnbrfloors" type="number" value="0" min="0" max="1000" class="formelementsCOM">
+                                        </div>
+                                        <br>
+                                            <h5>Number of basement floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrBasementsFloorsC" id="comnbrbasements" type="number" value="0" min="0" max="1000" class="formelementsCOM">
+                                        </div>
+                                        <br>
+                                            <h5>Number of parking space available</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrParkingC" id="comnbrparking" type="number" value="0" min="0" max="1000" class="formelementsCOM">
+                                        </div>
+                                        <br>
+                                            <h5>Number of elevator cages to be deployed</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrElevatorCages" id="comnbrcage" type="number" value="0" min="0" max="1000" class="formelementsCOM">
+                                        </div>
+                                    </div>
+                                    <!-- /Commercial -->
+                                    <!-- Corporate -->
+                                    <div id="corporateSelection">
+                                        <br>
+                                            <h5>Number of separate tenant compagnies</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbDisBuiCor" id="Cnbrbuisnesses" value="0" type="number" min="0" max="1000" class="formelementsC">
+                                        </div>
+                
+                                        <br>
+                                            <h5>Number of floors excluding basements floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrFloorsCor" id="Cnbrfloors" value="0" type="number" min="0" max="1000" class="formelementsC">
+                                        </div>
+                                        <br>
+                                            <h5>Number of basement floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbBasementsFloorsCor" id="Cnbrbasements" type="number" value="0" min="0" max="1000" class="formelementsC">
+                                        </div>
+                                        <br>
+                                            <h5>Number of parking space available</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrParkingCor" id="Cnbrparking" value="0" type="number" min="0" max="1000" class="formelementsC">
+                                        </div>
+                                        <br>
+                                            <h5>Maximum number of occupants per floor</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrOccPerFloorCor" id="Cmaxnbrpeople" value="0" type="number" min="0" max="1000" class="formelementsC">
+                                        </div>
+                
+                                    </div>
+                                    <!-- /Corporate -->
+                                    <!-- hybrid -->
+                                    <div id="hybridSelection">
+                                        <br>
+                                            <h5>Number of disctinct buisnesses</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrDisBuiH" id="CHnbrbuisnesses" value="0" type="number" min="0" max="1000" class="formelementsCH">
+                                        </div>
+                                        <br>
+                                            <h5>Number of floors excluding basements floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrFloorsH" id="CHnbrfloors" value="0" type="number" min="0" max="1000" class="formelementsCH">
+                                        </div>
+                                        <br>
+                                            <h5>Number of basement floors</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbBasementsFloorsH" id="CHnbrbasements" value="0" type="number" min="0" max="1000" class="formelementsCH">
+                                        </div>
+                                        <br>
+                                            <h5>Number of parking space available</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrParkingH" id="CHnbrparking" value="0" type="number" min="0" max="1000" class="formelementsCH">
+                                        </div>
+                                        <br>
+                                            <h5>Maximum number of occupants per floor</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrOccPerFloorH" id="CHmaxnbrpeople" value="0" type="number" min="0" max="1000" class="formelementsCH">
+                                        </div>
+                                        <br>
+                                            <h5>Number of hours of activity per day</h5>
+                                        <div class="col-md-3">
+                                            <input name="nbrActPerDay" id="CHnbrhours" type="number" min="0" max="24" class="formelementsCH">
+                                        </div>
+                                    </div>
+                                    <!-- /hybrid -->
+                                    <!-- Selection of Service type -->
+                                    <br />
+                                    <div>
+                                        <h4>Please select the type of service</h4>
+                                        <label class="radio" name="type_of_service">
+                                            <input id="standard" type="radio" name="type_of_service" value="Standard" class="serviceSelection">
+                                            <i></i> Standard
+                                        </label>
+                                        <label class="radio" name="type_of_service">
+                                            <input id="premium" type="radio" name="type_of_service" value="Premium" class="serviceSelection">
+                                            <i></i> Premium
+                                        </label>
+                                        <label class="radio" name="type_of_service">
+                                            <input id="excelium" type="radio" name="type_of_service" value="Excelium" class="serviceSelection">
+                                            <i></i> Excelium
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+						<!-- /Fancy Elements -->
+
+
+						<!-- results -->
+						<div class="card card-default">
+							<div class="card-heading card-heading-transparent">
+								<h2 class="bold">Technical estimates</h2>
+							</div>
+							<div class="card-block">
+								<div id="alertnegativenum" class="alert alert-danger margin-bottom-30"><!-- DANGER -->
+									<strong>Ho no!</strong> It would seem you entered an unauthorized value in one of the fields above. (negative numbers)
+								</div>
+
+								<div>
+									<h4>Number of elevators recommended</h4>
+									<input type="text" readonly class="form-control-plaintext border col-md-2" id="nbrelevators" value="0">
+								</div>
+
+								<br>
+								<h4>Rates</h4>
+								<div id="pricesdisplay" class="container">
+									<div class="row">
+										<div class="col">
+											<h5 class="text-center">Unit price</h5>
+											<input id="unitpricedisplay" type="text" readonly class="form-control-plaintext border col-md-12" value="0">
+										</div>
+										<div class="col">
+											<h5 class="text-center">Price of elevators</h5>
+											<input id="elevatorsprice" type="text" readonly class="form-control-plaintext border col-md-12" value="0">
+										</div>
+										<div class="col">
+											<h5 class="text-center">Cost of installations</h5>
+											<input id="instalcost" type="text" readonly class="form-control-plaintext border col-md-12" value="0">
+										</div>
+										<div class="col">
+											<h5 class="text-center">Total</h5>
+											<input id="totalfee" type="text" readonly class="form-control-plaintext border col-md-12" value="0">
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- results -->
+					</div>
+				</div>
+
+					<div class="card card-default">
+						<input type="submit" class=" btn btn-primary" value="Submit">
+					</div>
+
+				</section>
+            <% end %>
+
+			<%= render "footer" %>
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div><!-- /PRELOADER -->
+
+
+		<!-- JAVASCRIPT FILES -->
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+		<script src="assets/js/scripts.js"></script>
+		<script src="form.hide.show.js"></script>
+		<script src="form.estimate.nbrelevator.js"></script>
+		<script src="form.estimate.rates.js"></script>
+		<script src="//maps.google.com/maps/api/js?key=AIzaSyCqCn84CgZN6o1Xc3P4dM657HIxkX3jzPY"></script>
+		<script src="assets/plugins/gmaps.js"></script>
+		<script>
+
+			jQuery(document).ready(function(){
+
+				/**
+					@BASIC GOOGLE MAP
+				**/
+				var map2 = new GMaps({
+					div: '#map2',
+					class: "GMaps",
+					lat: 45.46149,
+					lng: -73.56701,
+					scrollwheel: false
+				});
+
+				var marker = map2.addMarker({
+					lat: 45.46149,
+					lng: -73.56701,
+					title: 'ROCKET ELEVATOR Inc.'
+				});
+
+			});
+
+		</script>
+
+	</body>
+</html>

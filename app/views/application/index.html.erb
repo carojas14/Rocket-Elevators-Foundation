@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Quotes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Buildingtype</th>
+      <th>Nbrappbuild</th>
+      <th>Nbrfloorsr</th>
+      <th>Nbrfloorsc</th>
+      <th>Nbrfloorscor</th>
+      <th>Nbrfloorsh</th>
+      <th>Nbrbasementfloorsr</th>
+      <th>Nbrbasementfloorsc</th>
+      <th>Nbrbasementfloorscor</th>
+      <th>Nbrbasementfloorsh</th>
+      <th>Nbrdisbuicor</th>
+      <th>Nbrdisbuih</th>
+      <th>Nbrparkingc</th>
+      <th>Nbrparkingcor</th>
+      <th>Nbrparkingh</th>
+      <th>Nbrelevatorcages</th>
+      <th>Nbroccperfloorcor</th>
+      <th>Nbroccperfloorh</th>
+      <th>Nbractperday</th>
+      <th>Servicetype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotes.each do |quote| %>
+      <tr>
+        <td><%= quote.buildingType %></td>
+        <td><%= quote.nbrAppBuild %></td>
+        <td><%= quote.nbrFloorsR %></td>
+        <td><%= quote.nbrFloorsC %></td>
+        <td><%= quote.nbrFloorsCor %></td>
+        <td><%= quote.nbrFloorsH %></td>
+        <td><%= quote.nbrBasementFloorsR %></td>
+        <td><%= quote.nbrBasementFloorsC %></td>
+        <td><%= quote.nbrBasementFloorsCor %></td>
+        <td><%= quote.nbrBasementFloorsH %></td>
+        <td><%= quote.nbrDisBuiCor %></td>
+        <td><%= quote.nbrDisBuiH %></td>
+        <td><%= quote.nbrParkingC %></td>
+        <td><%= quote.nbrParkingCor %></td>
+        <td><%= quote.nbrParkingH %></td>
+        <td><%= quote.nbrElevatorCages %></td>
+        <td><%= quote.nbrOccPerFloorCor %></td>
+        <td><%= quote.nbrOccPerFloorH %></td>
+        <td><%= quote.nbrActPerDay %></td>
+        <td><%= quote.serviceType %></td>
+        <td><%= link_to 'Show', quote %></td>
+        <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
+        <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quote', new_quote_path %>

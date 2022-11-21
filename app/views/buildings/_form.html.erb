@@ -1,0 +1,52 @@
+<%= form_with(model: building, local: true) do |form| %>
+  <% if building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
+
+      <ul>
+      <% building.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :AdressBuilding %>
+    <%= form.text_field :AdressBuilding %>
+  </div>
+
+  <div class="field">
+    <%= form.label :FullNameBuildingAdmin %>
+    <%= form.text_field :FullNameBuildingAdmin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :EmailAdminBuilding %>
+    <%= form.text_field :EmailAdminBuilding %>
+  </div>
+
+  <div class="field">
+    <%= form.label :PhoneNumberBuildingAdmin %>
+    <%= form.text_field :PhoneNumberBuildingAdmin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :FullNameTechContact %>
+    <%= form.text_field :FullNameTechContact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :TechContactEmail %>
+    <%= form.text_field :TechContactEmail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :TechContactPhone %>
+    <%= form.text_field :TechContactPhone %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
