@@ -58,10 +58,24 @@ addresses = Address.create(
 
     ####### ------- Create Users ------- ##########
 
+    user = User.create([
+        {email: "Houde@codeboxx.biz", password: "123456"},
+        {email: "Thibault@codeboxx.biz", password: "123456"},
+        {email: "Patry-Jessop@codeboxx.biz", password: "123456"},
+        {email: "Amyot@codeboxx.biz", password: "123456"},
+        {email: "Goupil@codeboxx.biz", password: "123456"},
+        {email: "Boivin@codeboxx.biz", password: "123456"},
+        {email: "Wever@codeboxx.biz", password: "123456"},
+        {email: "Kleinerman@codeboxx.biz", password: "123456"},
+        {email: "Hartono@codeboxx.biz", password: "123456"},
+        {email: "Ai@codeboxx.biz", password: "123456"},
+    ])
+
+
     user = User.create(
         email: Faker::Internet.email,
-        password: Faker::Internet.password
-    )
+        password: '654321')
+    
 
 
     ####### ------- Create Custumers ------- ##########

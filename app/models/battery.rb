@@ -6,11 +6,11 @@ class Battery < ApplicationRecord
   belongs_to :building
   has_many :columns
 
-  def columns
-    puts Battery.columns[0]
-    puts Battery.columns[1]
-    puts Battery.columns[2]
-    puts Battery.columns[3]
-  end
+  # def columns
+  #   puts Battery.columns[0]
+  #   puts Battery.columns[1]
+  #   puts Battery.columns[2]
+  #   puts Battery.columns[3]
+  # end
 end
 

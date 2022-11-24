@@ -1,0 +1,136 @@
+<%= form_with(model: intervention, local: true) do |f| %>
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <section>
+
+    <div class="container">
+      <div>
+        <div class="card">
+          <h4 class="card-header">STEP 1</h4>
+          <div class="card-body">
+            <div class="card-title">
+              <%= f.label :customer_id, "Find a customer" %>
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.select(:CustomerID) do %>>
+                <option selected>None</option>
+                  <%= @customers.each do |c| %>
+                <option value="<%= c.id %>"><%= c.CompanyName %></option>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a class="btn btn-primary" id="buttonCustomer">Next</a>
+            </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="step2" class="card">
+          <h4 class="card-header">STEP 2</h4>
+          <div class="card-body">
+            <%= f.label :building_id, "Find a building" %>
+            <div class="card-title">
+            <select class="custom-select mb-0 mr-sm-0 mb-sm-0" <%= f.grouped_collection_select :BuildingID, Customer.order(:CompanyName), :buildings, :CompanyName, :id, :addressBuilding, include_blank: true %>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a class="btn btn-primary" id="buttonBuilding">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="step3" class="card">
+          <h4 class="card-header">STEP 3</h4>
+          <div class="card-body">
+          <div class="card-title">
+            <%= f.label :battery_id, "Find a battery" %>
+            <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.grouped_collection_select :BatteryID, Building.order(:addressBuilding), :batteries, :addressBuilding, :id, :id, include_blank: true %>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a class="btn btn-primary" id="buttonBattery">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="step4" class="card">
+          <h4 class="card-header">STEP 4</h4>
+          <div class="card-body">
+          <%= f.label :column_id, "Find a column" %>
+            <div class="card-title">
+            <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :id, :id, include_blank: true %>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a class="btn btn-primary" id="buttonColumn">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="step5" class="card">
+          <h4 class="card-header">STEP 5</h4>
+          <div class="card-body">
+            <%= f.label :elevator_id, "Find a lift" %>
+            <div class="card-title">
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :id, :id, include_blank: true %>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a class="btn btn-primary" id="buttonElevator">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="card">
+          <h4 class="card-header">STEP 6</h4>
+          <div class="card-body">
+            <div class="card-title">
+              <%= f.label :employee_id, "Find an employee" %>
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.select(:EmployeeID) do %>>
+                <option selected>None</option>
+                  <%= @employee.each do |e| %>
+                <option value="<%= e.id %>"><%= e.firstName %> <%= e.lastName %></option>
+                <% end %>
+              <% end %>
+              </select>
+            </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h4 class="card-header">STEP 7</h4>
+          <div class="card-body">
+          <div class="card-title">
+            <%= f.label :Report, "Write a Report" %>
+              <div class="form-floating">
+              <textarea class="form-control" id="floatingTextarea"<%= f.text_area :Report %>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+      <%= f.label :Author, "Ticket author " %>
+      <div class="form-floating">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value= "<%= current_user.id %>" <%= f.text_area :Author%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit class: "btn btn-primary btn-lg"%>
+        <% end %>
+      </div>
+  </section>

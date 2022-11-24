@@ -1,0 +1,26 @@
+
+<%= render "navbar" %>
+
+<section class="page-header">
+	<div class="container">
+
+	<h1>NEW INTERVENTION</h1>
+
+	</div>
+</section>
+<!-- /PAGE HEADER -->
+
+<!-- style for the form backgound that's so cooool -->
+<style>
+	.formBGRE {
+		background-image: url(AdobeStock_122227340.jpeg);
+		background-repeat: repeat-x;
+	}
+</style>
+<!-- /style for the form backgound that's so cooool -->
+
+
+
+<%= render 'form', intervention: @intervention %>
+
+<%= link_to 'Back', interventions_path %>
