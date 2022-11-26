@@ -4,11 +4,13 @@
 
 $(document).on 'turbolinks:load', ->
 
+    # Hide steps
     $('#step2').hide()
     $('#step3').hide()
     $('#step4').hide()
     $('#step5').hide()
 
+#--- Customer selected and show building options ---
     building = $('#intervention_BuildingID').html()
     customer = $('#intervention_CustomerID').html()
     $('#buttonCustomer').click ->
@@ -22,7 +24,7 @@ $(document).on 'turbolinks:load', ->
             $('#intervention_BuildingID').empty()
             $('#step2').hide()
 
-
+#--- Building selected and show battery options ---
     battery = $('#intervention_BatteryID').html()
     $('#buttonBuilding').click ->
         building = $('#intervention_BuildingID :selected').text()
@@ -35,7 +37,7 @@ $(document).on 'turbolinks:load', ->
             $('#intervention_BatteryID').empty()
             $('#step3').hide()
 
-
+#--- Battery selected and show column options ---
     column = $('#intervention_ColumnID').html()
     $('#buttonBattery').click ->
         battery = $('#intervention_BatteryID :selected').text()
@@ -48,7 +50,7 @@ $(document).on 'turbolinks:load', ->
             $('#intervention_ColumnID').empty()
             $('#step4').hide()
 
-
+#--- Column selected and show elevator options ---
     elevator = $('#intervention_ElevatorID').html()
     $('#buttonColumn').click ->
         column = $('#intervention_ColumnID :selected').text()

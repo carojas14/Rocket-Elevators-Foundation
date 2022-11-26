@@ -15308,3 +15308,21 @@ h1:before,h2:before,h3:before,h4:before,h5:before,h6:before {
 	}
 
 }
+
+
+.new_user {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 0;
+	padding: 50px 100px;
+	margin: 50px 350px;
+}
+
+.espace>h2 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

@@ -12,9 +12,12 @@
   <% end %>
 
 
-  <section>
+  <%#-------  Intervention form -------#%>
 
+  <section>
     <div class="container">
+
+    <%#-------  Step 1 - Customer -------#%>
       <div>
         <div class="card">
           <h4 class="card-header">STEP 1</h4>
@@ -34,6 +37,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 2 - Building -------#%>
       <div>
         <div id="step2" class="card">
           <h4 class="card-header">STEP 2</h4>
@@ -49,6 +54,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 3 - Battery -------#%>
       <div>
         <div id="step3" class="card">
           <h4 class="card-header">STEP 3</h4>
@@ -64,6 +71,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 4 - Column -------#%>
       <div>
         <div id="step4" class="card">
           <h4 class="card-header">STEP 4</h4>
@@ -79,6 +88,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 5 - Elevator -------#%>
       <div>
         <div id="step5" class="card">
           <h4 class="card-header">STEP 5</h4>
@@ -94,6 +105,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 5 - Employee -------#%>
         <div class="card">
           <h4 class="card-header">STEP 6</h4>
           <div class="card-body">
@@ -110,6 +123,8 @@
         </div>
       </div>
 
+
+      <%#-------  Step 7 - Write Report -------#%>
       <div>
         <div class="card">
           <h4 class="card-header">STEP 7</h4>
@@ -124,11 +139,16 @@
         </div>
       </div>
 
-      <%= f.label :Author, "Ticket author " %>
-      <div class="form-floating">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value= "<%= current_user.id %>" <%= f.text_area :Author%>
+
+      <%#------- Author -------#%>
+      <div class="card">
+        <div class="card-header"><%= f.label :Author, "Ticket author ID " %></div>
+        <div class="card-body">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value= "<%= current_user.id %>" <%= f.text_area :Author%>
+        </div>
       </div>
 
+      <%#------- Button -------#%>
       <div class="actions">
         <%= f.submit class: "btn btn-primary btn-lg"%>
         <% end %>

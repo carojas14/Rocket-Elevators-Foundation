@@ -35,6 +35,8 @@ class InterventionsController < ApplicationController
     respond_to do |format|
       if @intervention.save
 
+
+        # Find the names to send in description
         author = Employee.find(@intervention.Author)
         authorName = author.firstName + " " + author.lastName
         customer = Customer.find(@intervention.CustomerID)
@@ -72,7 +74,7 @@ class InterventionsController < ApplicationController
                       Elevator ID: #{@intervention.ElevatorID},\n
                       Assigned Employee: " + employeeName + ",\n
                       Description: #{@intervention.Report}",
-                      subject: "New intervention submitted for building No." + @intervention.BuildingID.to_s
+                      subject: "Building No." + @intervention.BuildingID.to_s + " requires intervention"
 
         })
 
@@ -131,7 +133,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      # params.fetch(:intervention, {})
       params.require(:intervention).permit(:Author, :CustomerID, :BuildingID, :BatteryID, :ColumnID, :ElevatorID, :EmployeeID, :Report)
     end
 end
